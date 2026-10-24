@@ -1,0 +1,18 @@
+load("//bazel:api.bzl", "modular_py_test", "requirement")
+
+package(default_visibility = ["//max/tests:__subpackages__"])
+
+modular_py_test(
+    name = "test_forward",
+    size = "medium",
+    srcs = ["test_forward.py"],
+    deps = [
+        requirement("numpy"),
+        requirement("torch"),
+        "//max/python/max/driver",
+        "//max/python/max/dtype",
+        "//max/python/max/experimental",
+        "//max/python/max/graph",
+        "//max/python/max/pipelines/architectures/llada",
+    ],
+)
